@@ -48,7 +48,12 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/exchange-frontend:latest
             
             # --- LIMPIEZA DE PUERTO 80 ---
-            sudo lsof -t -i:80 | xargs -r sudo kill -9 || true
+            # Apache se reinicia solo si lo matas con kill. Hay que detener el servicio.
+            sudo systemctl stop apache2 || true
+            sudo systemctl disable apache2 || true
+            # Por si acaso Nginx también está instalado como servicio
+            sudo systemctl stop nginx || true
+            sudo systemctl disable nginx || true
             
             # Detener y eliminar el contenedor anterior (si existe)
             docker stop exchange-frontend || true
