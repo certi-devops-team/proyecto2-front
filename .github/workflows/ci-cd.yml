@@ -47,6 +47,9 @@ jobs:
             # Descargar la nueva imagen
             docker pull ${{ secrets.DOCKER_USERNAME }}/exchange-frontend:latest
             
+            # --- LIMPIEZA DE PUERTO 80 ---
+            sudo lsof -t -i:80 | xargs -r sudo kill -9 || true
+            
             # Detener y eliminar el contenedor anterior (si existe)
             docker stop exchange-frontend || true
             docker rm exchange-frontend || true
@@ -55,5 +58,5 @@ jobs:
             docker run -d \
               --name exchange-frontend \
               --restart always \
-              -p 81:81 \
+              -p 80:80 \
               ${{ secrets.DOCKER_USERNAME }}/exchange-frontend:latest
