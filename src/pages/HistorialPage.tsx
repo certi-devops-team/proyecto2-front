@@ -35,7 +35,7 @@ export default function HistorialPage() {
   }, [selectedCasa]);
 
   const handleCasaChange = (event: any) => {
-    const selectedId = event.target.value as number;
+    const selectedId = event.target.value as string;
     const selectedCasa = casas.find((casa) => casa.id === selectedId);
     setSelectedCasa(selectedCasa || null);
   };

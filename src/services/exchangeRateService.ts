@@ -6,7 +6,7 @@ export const getOfficialExchangeRates = async () => {
 };
 
 export const getExchangeRateHistory = async (
-    exchangeHouseId: number
+    exchangeHouseId: string
 ) => {
     const response = await jsonServerInstance.get(`/history?exchangeHouseId=${exchangeHouseId}`)
     return response.data;

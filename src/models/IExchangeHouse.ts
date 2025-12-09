@@ -1,5 +1,5 @@
 export interface IExchangeHouse {
-  id?: number;
+  id?: string;
   name: string;
   address: string;
   lat: number;

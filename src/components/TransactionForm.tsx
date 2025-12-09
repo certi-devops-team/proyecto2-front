@@ -35,7 +35,7 @@ const TransactionForm = ({
       <form onSubmit={formik.handleSubmit}>
         <DialogContent>
           <Typography sx={{ marginBottom: 2 }}>
-            Saldo disponible: ${user?.wallet.toFixed(2)}
+            Saldo disponible: ${Number(user?.wallet).toFixed(2) || 0}
           </Typography>
           <TextField
             fullWidth

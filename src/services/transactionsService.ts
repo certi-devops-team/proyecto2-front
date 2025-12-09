@@ -3,12 +3,15 @@ import type { ITransaction } from "../models/ITransaction";
 
 export const getTransactionsByUser = async (userId: string) => {
   try {
-    const response = await jsonInstance.get(`/transactions`);
-    const data = response.data.filter(
-      (transaction: ITransaction) =>
-        transaction.senderId === userId || transaction.receiverId === userId
-    );
-    return data;
+    const response = await jsonInstance.get(`/transactions`, {
+      params: {
+        senderId: userId,
+        receiverId: userId
+      }
+    });
+    // El backend ya filtra, pero si devuelve todo, el filtro en cliente no hace daño
+    // Sin embargo, para ser coherente con el backend, deberíamos confiar en los params
+    return response.data;
   } catch (error) {
     console.error("Error al obtener las transacciones por usuario:", error);
     throw error;

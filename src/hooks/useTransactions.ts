@@ -22,7 +22,7 @@ export const useTransactions = () => {
 
   const metrics = () => {
     return {
-      totalVolume: transactions.reduce((acc, t) => acc + t.amount, 0),
+      totalVolume: transactions.reduce((acc, t) => acc + Number(t.amount), 0),
 
       dailyVolume: transactions
         .filter((t) => {
@@ -30,10 +30,10 @@ export const useTransactions = () => {
           const txDate = new Date(t.time);
           return today.toDateString() === txDate.toDateString();
         })
-        .reduce((acc, t) => acc + t.amount, 0),
+        .reduce((acc, t) => acc + Number(t.amount), 0),
 
       profitLoss: transactions.reduce((acc, t) => {
-        return t.type === "Venta" ? acc + t.amount : acc - t.amount;
+        return t.type === "Venta" ? acc + Number(t.amount) : acc - Number(t.amount);
       }, 0),
 
       averageRate: transactions.length
@@ -47,9 +47,9 @@ export const useTransactions = () => {
       .typeError("Debe ser un número válido")
       .min(1, "La cantidad debe ser mayor a 0")
       .max(
-        user?.wallet || 0,
+        Number(user?.wallet) || 0,
         `La cantidad no puede exceder el saldo disponible (${
-          user?.wallet || 0
+          Number(user?.wallet) || 0
         })`
       )
       .required("La cantidad es requerida"),
@@ -78,6 +78,7 @@ export const useTransactions = () => {
     validationSchema: transactionSchema,
     onSubmit: async (values) => {
       try {
+        console.log(values)
         await submitHandler(values as ITransaction);
         closeFormHandler();
       } catch (error) {

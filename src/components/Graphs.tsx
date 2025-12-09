@@ -119,15 +119,17 @@ const ExchangeComparison = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {rows.map((row) => {
+              console.log(row);
+              return (
               <TableRow key={row.currency}>
                 <TableCell>{row.currency}</TableCell>
-                <TableCell align="center">{row.officialBuy}</TableCell>
-                <TableCell align="center">{row.officialSell}</TableCell>
-                <TableCell align="center">{row.parallelBuy}</TableCell>
-                <TableCell align="center">{row.parallelSell}</TableCell>
+                <TableCell align="center">{Number(row.officialBuy)}</TableCell>
+                <TableCell align="center">{Number(row.officialSell)}</TableCell>
+                <TableCell align="center">{Number(row.parallelBuy)}</TableCell>
+                <TableCell align="center">{Number(row.parallelSell)}</TableCell>
               </TableRow>
-            ))}
+            )})}
           </TableBody>
         </Table>
       </TableContainer>

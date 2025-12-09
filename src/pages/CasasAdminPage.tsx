@@ -31,7 +31,7 @@ const CasasAdminPage = () => {
   const [open, setOpen] = useState(false);
   const [editingCasa, setEditingCasa] = useState<IExchangeHouse | null>(null);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [selectedCasaId, setSelectedCasaId] = useState<number | null>(null);
+  const [selectedCasaId, setSelectedCasaId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchCasas();
@@ -71,7 +71,7 @@ const CasasAdminPage = () => {
     setSelectedCasaId(null);
   };
 
-  const openDeleteDialog = (id: number) => {
+  const openDeleteDialog = (id: string) => {
     setSelectedCasaId(id);
     setDeleteDialogOpen(true);
   };

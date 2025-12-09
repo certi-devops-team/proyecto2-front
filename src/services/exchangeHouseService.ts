@@ -22,7 +22,7 @@ export const createExchangeHouse = async (houseData: IExchangeHouse) => {
   }
 };
 
-export const updateExchangeHouse = async (houseData: IExchangeHouse, id?: number) => {
+export const updateExchangeHouse = async (houseData: IExchangeHouse, id?: string) => {
   try {
     if (!id) {
       console.error("ID de la casa de cambio es requerido para actualizar.");
@@ -35,7 +35,7 @@ export const updateExchangeHouse = async (houseData: IExchangeHouse, id?: number
   }
 };
 
-export const deleteExchangeHouse = async (id: number) => {
+export const deleteExchangeHouse = async (id: string) => {
   try {
     const response = await jsonServerInstance.delete(`/exchangeHouses/${id}`);
     return response.data;

@@ -25,8 +25,8 @@ export const updateWallets = async (transaction: ITransaction) => {
     const receiver = receiverResponse.data as User;
 
     // Actualizar los saldos
-    sender.wallet -= transaction.amount;
-    receiver.wallet += transaction.amount;
+    sender.wallet -= Number(transaction.amount);
+    receiver.wallet += Number(transaction.amount);
 
     const senderRes = await jsonInstance.put(`/users/${sender.id}`, sender);
     await jsonInstance.put(`/users/${receiver.id}`, receiver);

@@ -1,7 +1,7 @@
 import jsonServerInstance from '../api/jsonInstance';
 import { getParallelRateAverage } from './exchangeService';
 
-export const updateUserAlertSettings = async (userId: number, threshold: number, enabled: boolean) => {
+export const updateUserAlertSettings = async (userId: string, threshold: number, enabled: boolean) => {
   const response = await jsonServerInstance.patch(`/users/${userId}`, {
     alertThreshold: threshold,
     alertEnabled: enabled,
@@ -9,7 +9,7 @@ export const updateUserAlertSettings = async (userId: number, threshold: number,
   return response.data;
 };
 
-export const getUserAlertSettings = async (userId: number) => {
+export const getUserAlertSettings = async (userId: string) => {
   const response = await jsonServerInstance.get(`/users/${userId}`);
   return {
     alertThreshold: response.data.alertThreshold,
@@ -17,7 +17,7 @@ export const getUserAlertSettings = async (userId: number) => {
   };
 };
 
-export const checkAlert = async (userId: number, currency: string = 'USD') => {
+export const checkAlert = async (userId: string, currency: string = 'USD') => {
   const { alertThreshold, alertEnabled } = await getUserAlertSettings(userId);
 
   if (!alertEnabled) {
@@ -53,7 +53,7 @@ export const checkAlert = async (userId: number, currency: string = 'USD') => {
   };
 };
 
-export const simulateAlertCheck = async (userId: number, currency: string = 'USD') => {
+export const simulateAlertCheck = async (userId: string, currency: string = 'USD') => {
   const { alertThreshold, alertEnabled } = await getUserAlertSettings(userId);
 
   if (!alertEnabled) {

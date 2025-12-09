@@ -3,14 +3,10 @@ import jsonServerInstance from "../api/jsonInstance";
 import type { User } from "../interface/userInterface";
 
 export const login = async (email: string, password: string) => {
-  const response = await jsonServerInstance.get("/users", {
-    params: { email, password },
+  const response = await jsonServerInstance.post("/auth/login", {
+    email, password
   });
-  return response.data[0];
-};
-
-const generateToken = () => {
-  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+  return response.data;
 };
 
 export const register = async (
@@ -21,20 +17,15 @@ export const register = async (
   role: "admin" | "client" = "client"
 ) => {
   try {
-    const token = generateToken();
-
     const newUser = {
       email,
       password,
       name,
       lastName,
-      token,
-      alertThreshold: 0,
-      alertEnabled: false,
       role, // Usa el parámetro
     };
 
-    const response = await jsonServerInstance.post(`/users`, newUser);
+    const response = await jsonServerInstance.post(`/auth/register`, newUser);
     return response.data;
   } catch (error) {
     console.error("Error en el registro:", error);

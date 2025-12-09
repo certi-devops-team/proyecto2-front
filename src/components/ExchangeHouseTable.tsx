@@ -23,7 +23,7 @@ import ExchangeMap from "./ExchangeMap";
 interface ExchangeHouseTableProps {
   casas: IExchangeHouse[];
   onEdit: (casa: IExchangeHouse) => void;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
 }
 
 const ExchangeHouseTable: React.FC<ExchangeHouseTableProps> = ({
@@ -31,9 +31,9 @@ const ExchangeHouseTable: React.FC<ExchangeHouseTableProps> = ({
   onEdit,
   onDelete,
 }) => {
-  const [openRow, setOpenRow] = useState<number | null>(null);
+  const [openRow, setOpenRow] = useState<string | null>(null);
 
-  const toggleRow = (id: number) => {
+  const toggleRow = (id: string) => {
     setOpenRow(openRow === id ? null : id);
   };
 

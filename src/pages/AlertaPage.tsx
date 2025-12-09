@@ -20,9 +20,12 @@ import {
   simulateAlertCheck,
 } from "../services/AlertsService";
 
-const CURRENT_USER_ID = 1;
+import { useUserStore } from "../store/userStore";
 
 const AlertSettings = () => {
+  const user = useUserStore((state) => state.user);
+  const CURRENT_USER_ID = user?.id || "1";
+
   const [alertStatus, setAlertStatus] = useState<{
     triggered: boolean;
     message: string;

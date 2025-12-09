@@ -35,12 +35,12 @@ export const useExchangeManagement = () => {
     await fetchCasas();
   };
 
-  const actualizarCasa = async (values: IExchangeHouse, id: number) => {
+  const actualizarCasa = async (values: IExchangeHouse, id: string) => {
     await updateExchangeHouse(values, id);
     await fetchCasas();
   };
 
-  const eliminarCasa = async (id: number) => {
+  const eliminarCasa = async (id: string) => {
     await deleteExchangeHouse(id);
     await fetchCasas();
   };

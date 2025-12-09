@@ -37,7 +37,7 @@ const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
           {transactions ? (
             transactions.map((transaction: ITransaction) => (
               <TableRow key={transaction.id}>
-                <TableCell>{transaction.amount.toFixed(2)} USD</TableCell>
+                <TableCell>{Number(transaction.amount.toFixed(2))} USD</TableCell>
                 <TableCell>{transaction.type}</TableCell>
                 <TableCell>{transaction.currency}</TableCell>
                 <TableCell>
@@ -47,7 +47,7 @@ const TransactionsTable = ({ transactions }: TransactionsTableProps) => {
                   })}
                 </TableCell>
                 <TableCell>
-                  {transaction.rate.toFixed(2)} BOB
+                  {Number(transaction.rate.toFixed(2))} BOB
                   <Typography display="block" color="text.secondary">
                     {
                       exchangeHouses.find(
