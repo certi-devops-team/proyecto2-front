@@ -35,10 +35,6 @@ interface UserState {
   syncLightUser: () => void; // Sincroniza el usuario ligero con el completo
 }
 
-// Define un tipo parcial para la persistencia
-interface PersistedState {
-  user: User | null;
-}
 
 export const useUserStore = create<UserState>()(
   persist(

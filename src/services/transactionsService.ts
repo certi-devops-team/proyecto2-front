@@ -1,6 +1,5 @@
 import jsonInstance from "../api/jsonInstance";
 import type { ITransaction } from "../models/ITransaction";
-import { updateWallets } from "./userService";
 
 export const getTransactionsByUser = async (userId: string) => {
   try {

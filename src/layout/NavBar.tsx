@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, IconButton, useMediaQuery, useTheme, Box } from "@mui/material";
+import { AppBar, Toolbar, Typography, IconButton, useMediaQuery, useTheme, } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 interface NavBarProps {

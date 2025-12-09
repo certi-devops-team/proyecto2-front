@@ -8,7 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import type { IExchangeRate } from "../models/IExchangeHouse";
+import type { IExchangeRate } from "../models/IExchangeRate";
 
 interface ExchangeRateChartProps {
   rates: IExchangeRate[];

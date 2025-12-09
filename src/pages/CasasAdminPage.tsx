@@ -14,9 +14,11 @@ import ExchangeHouseForm from "../components/ExchangeHouseForm";
 import ExchangeHouseTable from "../components/ExchangeHouseTable";
 import { useExchangeManagement } from "../hooks/useExchangeManagement";
 import { useUserStore } from "../store/userStore";
+import { useNavigate } from "react-router-dom";
 
 const CasasAdminPage = () => {
   const user = useUserStore((state) => state.user);
+  const navigate = useNavigate();
   const isAdmin = useUserStore((state) => state.isAdmin);
   const {
     casas,
@@ -31,14 +33,16 @@ const CasasAdminPage = () => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [selectedCasaId, setSelectedCasaId] = useState<number | null>(null);
 
-  if (!user || !isAdmin()) {
-    console.log("Acceso denegado, redirigiendo a /unauthorized. User:", user);
-    return <Navigate to="/unauthorized" replace />;
-  }
-
   useEffect(() => {
     fetchCasas();
   }, []);
+
+  if (!user || !isAdmin()) {
+    console.log("Acceso denegado, redirigiendo a /unauthorized. User:", user);
+    navigate("/unauthorized");
+    return null;
+  }
+
     
   const handleOpen = (casa: IExchangeHouse | null = null) => {
     setEditingCasa(casa);

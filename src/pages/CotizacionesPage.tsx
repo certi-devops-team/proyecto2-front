@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { Typography, Grid, Paper, Box, Divider, Chip } from "@mui/material";
 import { useQuotes } from "../hooks/useQuotes";
 import {
@@ -20,10 +20,10 @@ const CotizacionesPage = () => {
       console.log("👀 Official rates:", official);
       console.log("👀 Parallel rates:", parallel);
 
-      const merged = parallel.map((house) => {
+      const merged = parallel.map((house: any) => {
         const o = official
-          .filter((r) => r.currency === house.currency)
-          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
+          .filter((r: any) => r.currency === house.currency)
+          .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
 
         return {
           name: house.name,

@@ -5,7 +5,7 @@ import jsonServerInstance from "../api/jsonInstance";
 
 const MapaPage = () => {
   const [exchangeHouses, setExchangeHouses] = useState([]);
-  const [selectedHouse, setSelectedHouse] = useState(null);
+  const [selectedHouse, setSelectedHouse] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +31,7 @@ const MapaPage = () => {
           }}
         >
           <Grid container spacing={2}>
-            {exchangeHouses.map((house) => (
+            {exchangeHouses.map((house: any) => (
               <Grid size={12} key={house.id}>
                 <Card
                   variant="outlined"

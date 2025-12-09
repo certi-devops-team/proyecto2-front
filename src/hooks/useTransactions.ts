@@ -150,12 +150,14 @@ export const useTransactions = () => {
       switch (dateRange) {
         case "day":
           return txDate.toDateString() === now.toDateString();
-        case "week":
+        case "week":{
           const weekAgo = new Date(now.setDate(now.getDate() - 7));
           return txDate >= weekAgo;
-        case "month":
+        }
+        case "month": {
           const monthAgo = new Date(now.setMonth(now.getMonth() - 1));
           return txDate >= monthAgo;
+        }
         default:
           return true;
       }
