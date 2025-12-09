@@ -55,5 +55,5 @@ jobs:
             docker run -d \
               --name exchange-frontend \
               --restart always \
-              -p 80:80 \
+              -p 81:81 \
               ${{ secrets.DOCKER_USERNAME }}/exchange-frontend:latest
