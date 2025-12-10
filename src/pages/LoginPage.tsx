@@ -40,7 +40,7 @@ export default function LoginPage() {
             />
           </Box>
           <Typography variant="h5" gutterBottom>
-            Iniciar Sesión
+            Iniciar Sesión editado
           </Typography>
           <form onSubmit={formik.handleSubmit}>
             <TextField
